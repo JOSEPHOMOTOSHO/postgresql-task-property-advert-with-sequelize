@@ -6,7 +6,15 @@ import SignUpValidator from "../middlewares/SignupValidator"
 import SignInValidator from '../middlewares/SignInValidator'
 import doesUserExists from '../middlewares/doesUserExists'
 import signin from "../controllers/authController"
-import {createAd,updateAd,updateAdtoSold,deleteAd,getAllAds,getSingleAd} from "../controllers/propertyController"
+import {
+  createAd,
+  updateAd,
+  updateAdtoSold,
+  getSingleAd,
+  getAllAds,
+  deleteAd,
+} from "../controllers/propertyController";
+
 import isSignedIn from "../middlewares/isSignedIn"
 import {imageUpload} from "../middlewares/imageupload"
 import isOwner from "../middlewares/isOwner"

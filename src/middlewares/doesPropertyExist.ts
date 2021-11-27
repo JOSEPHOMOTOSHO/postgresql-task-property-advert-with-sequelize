@@ -1,6 +1,7 @@
-import client from "../connection";
-import { getProperty } from "../sqlQueries";
+// import client from "../connection[not used]";
+// import { getProperty } from "../sqlQueries[not used]";
 import { NextFunction, Request, Response } from "express";
+import { Properties } from "../../models/properties";
 
 interface Requestextended extends Request {
   User?: {};
@@ -11,31 +12,23 @@ interface user {
   id: number;
 }
 
-const doesPropertyExist = (
+const doesPropertyExist = async (
   req: Requestextended,
   res: Response,
   next: NextFunction
-) => {
+): Promise<Response | void | undefined> => {
   const property_id = parseInt(req.params.id);
-  client.query(
-    getProperty,
-    [property_id],
-    (error, results): Response | void => {
-      if (error) {
-        return res.status(400).json({ status: "error", error, data: null });
-      }
-      const noProperty = !results.rows.length;
-
-      if (noProperty) {
-        return res.status(400).send("No such Property exists");
-      }
-
-      const property = results.rows[0];
-      req.property = property;
-
-      next();
-    }
-  );
+  const property = await Properties.findOne({
+    where: {
+      id: property_id,
+    },
+  });
+  if (!property) {
+    return res.status(400).send("No such Property exists");
+  }
+  const Userproperty = property;
+  req.property = Userproperty;
+  next();
 };
 
 export default doesPropertyExist;
