@@ -1,6 +1,6 @@
 "use strict";
 const { Model, DataTypes } = require("sequelize");
-import db from "../config/config";
+import db from "../config/config1";
 
 interface UserAttributes {
   id: number;

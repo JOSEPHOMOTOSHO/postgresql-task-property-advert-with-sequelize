@@ -3,16 +3,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import cookieparser from "cookie-parser";
 import indexRoutes from "./routes/index";
-import {
-  CreateUsersTable,
-  CreatePropertiesTable,
-} from "./sqlQueries[not used]";
-
+import logger from "morgan";
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieparser());
+app.use(logger("dev"));
 app.use(indexRoutes);
 
 
