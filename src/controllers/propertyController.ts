@@ -157,6 +157,7 @@ const getSingleAd = async (
 ): Promise<Response | void> => {
   try {
     const property = req.property;
+  
     return res.status(200).json({
       status: "success",
       data: {

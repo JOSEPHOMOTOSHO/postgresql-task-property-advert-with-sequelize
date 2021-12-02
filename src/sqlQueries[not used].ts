@@ -61,3 +61,7 @@ export {
   getAllPropertiesWithUserDetails,
   deleteProperty,
 };
+
+
+//  "db:reset": " npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all" npx sequelize-cli db:drop && npx sequelize-cli db:create &&
+//"pretest": "cross-env NODE_ENV=test yarn db:reset",

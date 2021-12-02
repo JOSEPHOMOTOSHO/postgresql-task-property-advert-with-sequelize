@@ -24,7 +24,7 @@ const doesPropertyExist = async (
     },
   });
   if (!property) {
-    return res.status(400).send("No such Property exists");
+    return res.status(400).send({errorMessage:"No such Property exists"});
   }
   const Userproperty = property;
   req.property = Userproperty;

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /Users/e/.yarn/bin/yarn.js add @types/cross-env
+  /usr/local/bin/node /Users/e/.yarn/bin/yarn.js test
 
 PATH: 
   /Users/e/.yarn/bin:/Users/e/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/e/.yarn/bin:/Users/e/.config/yarn/global/node_modules/.bin
@@ -14,17 +14,12 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fcross-env: Not found
-      at Request.params.callback [as _callback] (/Users/e/.yarn/lib/cli.js:67031:18)
-      at Request.self.callback (/Users/e/.yarn/lib/cli.js:140885:22)
-      at Request.emit (events.js:375:28)
-      at Request.<anonymous> (/Users/e/.yarn/lib/cli.js:141857:10)
-      at Request.emit (events.js:375:28)
-      at IncomingMessage.<anonymous> (/Users/e/.yarn/lib/cli.js:141779:12)
-      at Object.onceWrapper (events.js:481:28)
-      at IncomingMessage.emit (events.js:387:35)
-      at endReadableNT (internal/streams/readable.js:1317:12)
-      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+  SyntaxError: /Users/e/Desktop/postgresqltaskWithSequelize/package.json: Unexpected token } in JSON at position 1250
+      at JSON.parse (<anonymous>)
+      at /Users/e/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/e/.yarn/lib/cli.js:310:30)
+      at /Users/e/.yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -67,15 +62,10 @@ npm manifest:
       "sequelize": "^6.12.0-alpha.1"
     },
     "scripts": {
-      "test": "jest",
+      "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+      "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create",
       "start": "ts-node-dev ./src/app.ts",
-      "dev": "tsnd --respawn ./src/app.ts"
-    },
-    "jest": {
-      "testEnvironment": "node",
-      "coveragePathIgnorePatterns": [
-        "/node_modules/"
-      ]
+      "dev": "tsnd --respawn ./src/app.ts",
     }
   }
 

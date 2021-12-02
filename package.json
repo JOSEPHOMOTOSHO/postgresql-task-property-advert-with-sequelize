@@ -39,10 +39,8 @@
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "cross-env NODE_ENV=test yarn db:reset",
     "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create",
     "start": "ts-node-dev ./src/app.ts",
-    "dev": "tsnd --respawn ./src/app.ts",
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+    "dev": "tsnd --respawn ./src/app.ts"
   }
 }
