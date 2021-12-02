@@ -11,6 +11,7 @@ const isSignedIn = (
   next: NextFunction
 ): Response | void => {
   let storedDetails = req.cookies;
+  console.log("i am cookies",storedDetails)
   if (!Object.keys(storedDetails).length) {
     return res.status(400).send({ message: "You are not signed In" });
   }
